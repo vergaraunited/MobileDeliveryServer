@@ -1,0 +1,14 @@
+C:\Users\evergara\source\Workspaces\United Mobile Delivery\MobileUnitedServer\bin\Release\netstandard2.0\MobileUnitedServer.deps.json
+C:\Users\evergara\source\Workspaces\United Mobile Delivery\MobileUnitedServer\bin\Release\netstandard2.0\MobileUnitedServer.dll
+C:\Users\evergara\source\Workspaces\United Mobile Delivery\MobileUnitedServer\bin\Release\netstandard2.0\MobileUnitedServer.pdb
+C:\Users\evergara\source\Workspaces\United Mobile Delivery\MobileUnitedServer\bin\Release\netstandard2.0\MobileDeliveryLogger.dll
+C:\Users\evergara\source\Workspaces\United Mobile Delivery\MobileUnitedServer\bin\Release\netstandard2.0\UMDGeneral.dll
+C:\Users\evergara\source\Workspaces\United Mobile Delivery\MobileUnitedServer\bin\Release\netstandard2.0\MobileDeliveryLogger.pdb
+C:\Users\evergara\source\Workspaces\United Mobile Delivery\MobileUnitedServer\bin\Release\netstandard2.0\UMDGeneral.pdb
+C:\Users\evergara\source\Workspaces\United Mobile Delivery\MobileUnitedServer\obj\Release\netstandard2.0\MobileUnitedServer.csprojAssemblyReference.cache
+C:\Users\evergara\source\Workspaces\United Mobile Delivery\MobileUnitedServer\obj\Release\netstandard2.0\MobileUnitedServer.csproj.CoreCompileInputs.cache
+C:\Users\evergara\source\Workspaces\United Mobile Delivery\MobileUnitedServer\obj\Release\netstandard2.0\MobileUnitedServer.AssemblyInfoInputs.cache
+C:\Users\evergara\source\Workspaces\United Mobile Delivery\MobileUnitedServer\obj\Release\netstandard2.0\MobileUnitedServer.AssemblyInfo.cs
+C:\Users\evergara\source\Workspaces\United Mobile Delivery\MobileUnitedServer\obj\Release\netstandard2.0\MobileUnitedServer.csproj.CopyComplete
+C:\Users\evergara\source\Workspaces\United Mobile Delivery\MobileUnitedServer\obj\Release\netstandard2.0\MobileUnitedServer.dll
+C:\Users\evergara\source\Workspaces\United Mobile Delivery\MobileUnitedServer\obj\Release\netstandard2.0\MobileUnitedServer.pdb
