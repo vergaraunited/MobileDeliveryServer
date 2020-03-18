@@ -8,9 +8,4 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\MobileDeliveryLogger\MobileDeliveryLogger.csproj" />
-    <ProjectReference Include="..\UMDGeneral\UMDGeneral.csproj" />
-  </ItemGroup>
-
 </Project>
