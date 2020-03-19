@@ -7,9 +7,6 @@
 [submodule "MobileDeliveryLogger"]
 	path = MobileDeliveryLogger
 	url = https://github.com/vergaraunited/MobileDeliveryLogger.git
-[submodule "MobileDeliveryMVVM"]
-	path = MobileDeliveryMVVM
-	url = https://github.com/vergaraunited/MobileDeliveryMVVM.git
 [submodule "MobileDeliverySettings"]
 	path = MobileDeliverySettings
 	url = https://github.com/vergaraunited/MobileDeliverySettings.git
