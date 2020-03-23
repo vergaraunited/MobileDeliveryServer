@@ -114,14 +114,14 @@ namespace MobileDeliveryServer
 
             });
 
-            var input = Console.ReadLine();
-            while (input != "exit")
-            {
-                Logger.Info("Broadcast: " + input);
-                //isaCommand cmd = new MsgTypes.Command();
-                //cmd.command = MsgTypes.eCommand.Broadcast;
-                input = Console.ReadLine();
-            }
+            //var input = Console.ReadLine();
+            //while (input != "exit")
+            //{
+            //    Logger.Info("Broadcast: " + input);
+            //    //isaCommand cmd = new MsgTypes.Command();
+            //    //cmd.command = MsgTypes.eCommand.Broadcast;
+            //    input = Console.ReadLine();
+            //}
         }
     }
 }

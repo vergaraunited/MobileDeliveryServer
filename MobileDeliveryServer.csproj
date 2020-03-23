@@ -8,4 +8,9 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MobileDeliveryLogger" Version="1.0.0" />
+    <PackageReference Include="UMDGeneral" Version="1.0.0" />
+  </ItemGroup>
+
 </Project>
