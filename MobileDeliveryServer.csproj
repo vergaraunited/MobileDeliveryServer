@@ -19,9 +19,14 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="MobileDeliveryLogger" Version="1.0.0" />
-    <PackageReference Include="UMDGeneral" Version="1.1.0" />
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <PackageReference Include="MobileDeliveryLogger" Version="1.1.1" />
+    <PackageReference Include="UMDGeneral" Version="1.2.2" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(Configuration)' != 'Release'">
+    <ProjectReference Include="../UMDGeneral\MobileDeliveryLogger\MobileDeliveryLogger.csproj" />
+    <ProjectReference Include="../UMDGeneral\UMDGeneral.csproj" />
   </ItemGroup>
 
 </Project>
