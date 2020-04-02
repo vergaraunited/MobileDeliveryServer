@@ -5,5 +5,7 @@ packages/
 .vs/
 bin
 obj/
+obj/*
 *.vspscc
 *.nupkg
+*.targets
