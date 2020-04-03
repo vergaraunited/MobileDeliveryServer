@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using UMDGeneral.Interfaces.Interfaces;
+using MobileDeliveryGeneral.Interfaces.Interfaces;
 
 namespace MobileDeliveryServer.Handler
 {

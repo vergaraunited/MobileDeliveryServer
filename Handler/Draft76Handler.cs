@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using UMDGeneral.Interfaces.Interfaces;
-using UMDGeneral.Utilities;
+using MobileDeliveryGeneral.Interfaces.Interfaces;
+using MobileDeliveryGeneral.Utilities;
 
 namespace MobileDeliveryServer.Handler
 {

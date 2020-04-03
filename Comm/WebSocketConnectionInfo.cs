@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using UMDGeneral.Interfaces.Interfaces;
-using UMDGeneral.Utilities;
+using MobileDeliveryGeneral.Interfaces.Interfaces;
+using MobileDeliveryGeneral.Utilities;
 
 namespace MobileDeliveryServer.Comm
 {

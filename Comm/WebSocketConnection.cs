@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using UMDGeneral.Interfaces.Interfaces;
-using UMDGeneral.Utilities;
+using MobileDeliveryGeneral.Interfaces.Interfaces;
+using MobileDeliveryGeneral.Utilities;
 
 namespace MobileDeliveryServer.Comm
 {

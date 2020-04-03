@@ -3,9 +3,9 @@ using MobileDeliveryServer.Comm;
 using MobileDeliveryServer.Connections;
 using System;
 using System.Text;
-using UMDGeneral.Interfaces;
-using UMDGeneral.Interfaces.WebSocketServer;
-using UMDGeneral.Utilities;
+using MobileDeliveryGeneral.Interfaces;
+using MobileDeliveryGeneral.Interfaces.WebSocketServer;
+using MobileDeliveryGeneral.Utilities;
 
 namespace MobileDeliveryServer
 {

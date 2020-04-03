@@ -1,6 +1,6 @@
 ﻿using MobileDeliveryServer.Handler;
 using System;
-using UMDGeneral.Interfaces.Interfaces;
+using MobileDeliveryGeneral.Interfaces.Interfaces;
 
 namespace MobileDeliveryServer.Comm
 {
