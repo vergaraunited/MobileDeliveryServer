@@ -5,13 +5,14 @@
     <Description>Dot Net Standard abstracted Server implementation for all server components in Mobile Delivery.</Description>
     <PackageIconUrl>https://unitedwindowmfg.com/wp-content/uploads/2017/02/New-Logo-4.png</PackageIconUrl>
     <PackageReleaseNotes>v1.4 - Loading nupkg autogen - remove UMDGeneral ref now using MobileDeliveryGeneral
-Symbols, fixed.</PackageReleaseNotes>
+Symbols, fixed.
+Update General nuget with SQL Conn setting fix.</PackageReleaseNotes>
     <RepositoryType>GIT</RepositoryType>
     <RepositoryUrl>https://github.com/vergaraunited/MobileDeliveryServer</RepositoryUrl>
     <Authors>Ed Vergara</Authors>
-    <Version>1.4.1</Version>
+    <Version>1.4.2</Version>
     <Company>United Window Manufacturer</Company>
-    <AssemblyVersion>1.4.1.0</AssemblyVersion>
+    <AssemblyVersion>1.4.2.0</AssemblyVersion>
     <PackageProjectUrl>https://github.com/vergaraunited/MobileDeliveryServer</PackageProjectUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IncludeSymbols>true</IncludeSymbols>
@@ -26,7 +27,7 @@ Symbols, fixed.</PackageReleaseNotes>
   </Target>
   
   <ItemGroup>
-    <PackageReference Include="MobileDeliveryGeneral" Version="1.4.1" />
+    <PackageReference Include="MobileDeliveryGeneral" Version="1.4.2" />
   </ItemGroup>
 
 </Project>
