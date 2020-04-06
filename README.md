@@ -1,6 +1,19 @@
 # MobileDeliveryServer
 ## United Mobile Delivery Server - Abstract DLL for Mobile Delivery Server Hosting components
 
+Automatic built in {Ping/Pong} reposonses to correspond with ping/pong behavior for the abstract Client abstract dll (MobileDeliveryClient).
+
+#### Implementation
+```cs
+public delegate void ProcessMsgDelegateRXRaw(byte[] cmd, Func<byte[], Task> cbsend);
+
+public void Start(ProcessMsgDelegateRXRaw pmd)
+{
+    Server srv = new Server(name, url, port, level);
+    srv.Start(pmd);
+}
+```
+
 .netStandard2.0
 
 nuget pack -IncludeReferencedProjects -Build -Symbols -Properties Configuration=Release
