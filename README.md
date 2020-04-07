@@ -1,5 +1,8 @@
-# MobileDeliveryServer
+# MobileDeliveryServer![MobileDeliveryLogger Nuget Versions (UMDNuget Artifacts)][logo]
+## [v1.4.4](https://dev.azure.com/unitedwindowmfg/United%20Mobile%20Delivery/_packaging?_a=package&feed=UMDNuget&package=MobileDeliveryServer&protocolType=NuGet&version=1.4.2&view=versions)
 ## United Mobile Delivery Server - Abstract DLL for Mobile Delivery Server Hosting components
+
+[logo]: https://github.com/vergaraunited/Docs/blob/master/imgs/png/server_icon.png (https://dev.azure.com/unitedwindowmfg/United%20Mobile%20Delivery/_packaging?_a=package&feed=UMDNuget&package=MobileDeliveryServer&protocolType=NuGet&version=1.4.2) 
 
 Automatic built in {Ping/Pong} reposonses to correspond with ping/pong behavior for the abstract Client abstract dll (MobileDeliveryClient).
 
