@@ -14,13 +14,17 @@ namespace MobileDeliveryServer
         string url;
         string port;
         string name;
-        public Server(string name, string url, string port="81") { this.name = name;  this.url = url; this.port = port; }
+        LogLevel level; 
+        public Server(string name, string url, string port="81", LogLevel loglevel=LogLevel.Info)
+        {
+            this.name = name;  this.url = url; this.port = port; level = loglevel;
+        }
         public void Start(ProcessMsgDelegateRXRaw pmd)
         { 
             Sockets soks = new Sockets();
             Logger.AppName = name;
 
-            Logger.Level = LogLevel.Info;
+            Logger.Level = level;
             string port = this.port;
             WebSocketServer server;
 

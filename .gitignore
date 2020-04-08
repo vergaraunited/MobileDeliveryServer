@@ -4,8 +4,7 @@ packages/
 *tf*/
 .vs/
 bin
-obj/
-obj/*
+obj
 *.vspscc
 *.nupkg
 *.targets
