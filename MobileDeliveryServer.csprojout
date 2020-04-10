@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Dot Net Standard abstracted Server implementation for all server components in Mobile Delivery.</Description>
+    <PackageIconUrl>https://unitedwindowmfg.com/wp-content/uploads/2017/02/New-Logo-4.png</PackageIconUrl>
+    <PackageReleaseNotes>1.5.1</PackageReleaseNotes>
+    <RepositoryType>GIT</RepositoryType>
+    <RepositoryUrl>https://github.com/vergaraunited/MobileDeliveryServer</RepositoryUrl>
+    <Authors>Ed Vergara</Authors>
+    <Version>1.5.1</Version>
+    <Company>United Window Manufacturer</Company>
+    <AssemblyVersion>1.5.1.0</AssemblyVersion>
+    <PackageProjectUrl>https://github.com/vergaraunited/MobileDeliveryServer</PackageProjectUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeSymbols>true</IncludeSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="nuget restore $(ProjectPath)" />
+  </Target>
+  
+  <ItemGroup>
+    <PackageReference Include="MobileDeliveryGeneral" Version="1.5.3" />
+  </ItemGroup>
+
+</Project>
