@@ -4,13 +4,13 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Description>Dot Net Standard abstracted Server implementation for all server components in Mobile Delivery.</Description>
     <PackageIconUrl>https://unitedwindowmfg.com/wp-content/uploads/2017/02/New-Logo-4.png</PackageIconUrl>
-    <PackageReleaseNotes>v1.4.5 - use port over WinSysPort or UMDPort</PackageReleaseNotes>
+    <PackageReleaseNotes>1.5.1</PackageReleaseNotes>
     <RepositoryType>GIT</RepositoryType>
     <RepositoryUrl>https://github.com/vergaraunited/MobileDeliveryServer</RepositoryUrl>
     <Authors>Ed Vergara</Authors>
-    <Version>1.4.5</Version>
+    <Version>1.5.1</Version>
     <Company>United Window Manufacturer</Company>
-    <AssemblyVersion>1.4.4.0</AssemblyVersion>
+    <AssemblyVersion>1.5.1.0</AssemblyVersion>
     <PackageProjectUrl>https://github.com/vergaraunited/MobileDeliveryServer</PackageProjectUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IncludeSymbols>true</IncludeSymbols>
@@ -25,7 +25,7 @@
   </Target>
   
   <ItemGroup>
-    <PackageReference Include="MobileDeliveryGeneral" Version="1.4.4" />
+    <PackageReference Include="MobileDeliveryGeneral" Version="1.5.2" />
   </ItemGroup>
 
 </Project>
