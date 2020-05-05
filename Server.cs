@@ -6,6 +6,7 @@ using System.Text;
 using MobileDeliveryGeneral.Interfaces;
 using MobileDeliveryGeneral.Interfaces.WebSocketServer;
 using MobileDeliveryGeneral.Utilities;
+using System.Threading;
 
 namespace MobileDeliveryServer
 {
@@ -14,7 +15,8 @@ namespace MobileDeliveryServer
         string url;
         string port;
         string name;
-        LogLevel level; 
+        LogLevel level;
+        object oLock = new object();
         public Server(string name, string url, string port="81", LogLevel loglevel=LogLevel.Info)
         {
             this.name = name;  this.url = url; this.port = port; level = loglevel;
@@ -39,7 +41,7 @@ namespace MobileDeliveryServer
                 {
                     try
                     { 
-                        Logger.Info($"*****************  {name} - Client Connection Opened!  ************************* " + socket.ConnectionInfo.ClientPort);
+                        Logger.Info($"*****************  {name} - New Client Connection Opened!  ************************* " + socket.ConnectionInfo.ClientPort);
                         socket.ConnectionInfo.PM = new ProcessMessages(pmd, socket.Send);
                         soks.AddSocketConnection(socket);
                         
@@ -66,11 +68,22 @@ namespace MobileDeliveryServer
                 {
                     try
                     {
-                        soks.dSocketMsgProc[socket.ConnectionInfo.Id].ProcessMessage(bmsg);
-                        Logger.Debug($"{name} Server Receiving OnBinary Command: " + socket.ConnectionInfo.Id.ToString() + "- Port: " + socket.ConnectionInfo.ClientPort );
+                        Monitor.Enter(oLock);
+                        ProcessMessages sok;
+                        if (soks.dSocketMsgProc.TryGetValue(socket.ConnectionInfo.Id, out sok))
+                        {
+                            sok.ProcessMessage(bmsg);
+                            Logger.Debug($"{name} Server Receiving OnBinary Command: " + socket.ConnectionInfo.Id.ToString() + "- Port: " + socket.ConnectionInfo.ClientPort);
+                        }
+                        else
+                            Logger.Error($"Server lost connection to stale client.  Port: {socket.ConnectionInfo.ClientPort}");
                     }
                     catch (Exception ex) {
-                        //Logger.Error("Server Receiving OnBinary Command Error: " + ex.Message + "- Port: " + socket.ConnectionInfo.ClientPort);
+                        Logger.Error("Server Receiving OnBinary Command Error: " + ex.Message + "- Port: " + socket.ConnectionInfo.ClientPort);
+                    }
+                    finally
+                    {
+                        Monitor.Exit(oLock);
                     }
                 };
                 socket.OnMessage = message =>
