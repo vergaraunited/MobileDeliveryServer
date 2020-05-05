@@ -91,7 +91,7 @@ namespace MobileDeliveryServer.Comm
             ListenerSocket.Bind(ipLocal);
             ListenerSocket.Listen(100);
             Port = ((IPEndPoint)ListenerSocket.LocalEndPoint).Port;
-            Logger.Info("Server started at + Location " + Location + "(actual port )" + Port);
+            Logger.Info("WebSocketServer started at + Location " + Location + "(actual port )" + Port);
             if (_scheme == "wss")
             {
                 if (Certificate == null)

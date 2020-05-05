@@ -12,7 +12,7 @@
     <Company>United Window Manufacturer</Company>
     <AssemblyVersion>1.5.1.0</AssemblyVersion>
     <PackageProjectUrl>https://github.com/vergaraunited/MobileDeliveryServer</PackageProjectUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <IncludeSymbols>true</IncludeSymbols>
   </PropertyGroup>
 
@@ -20,12 +20,8 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="nuget restore $(ProjectPath)" />
-  </Target>
-  
   <ItemGroup>
-    <PackageReference Include="MobileDeliveryGeneral" Version="1.5.2" />
+    <ProjectReference Include="..\MobileDeliveryGeneral\MobileDeliveryGeneral.csproj" />
   </ItemGroup>
 
 </Project>
