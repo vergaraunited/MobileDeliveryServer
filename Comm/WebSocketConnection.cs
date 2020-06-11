@@ -153,8 +153,6 @@ namespace MobileDeliveryServer.Comm
 
         private void Read(List<byte> data, byte[] buffer)
         {
-
-
             if (!IsAvailable)
                 return;
 

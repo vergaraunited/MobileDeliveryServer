@@ -15,8 +15,8 @@ namespace MobileDeliveryServer.Comm
     public class SocketWrapper : ISocket
     {
 
-        public const UInt32 KeepAliveInterval = 60000;
-        public const UInt32 RetryInterval = 30000;
+        public UInt32 KeepAliveInterval = 60000;
+        public UInt32 RetryInterval = 30000;
 
         private readonly Socket _socket;
         private Stream _stream;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using MobileDeliveryGeneral.Definitions;
 using MobileDeliveryGeneral.Interfaces.Interfaces;
 using MobileDeliveryGeneral.Utilities;
 
@@ -47,7 +48,7 @@ namespace MobileDeliveryServer.Comm
         WebSocketConnectionInfo()
         {
             Cookies = new Dictionary<string, string>();
-            Id = Guid.NewGuid();
+            Id = MsgTypes.NewGuid();
         }
 
         public string NegotiatedSubProtocol { get; private set; }
