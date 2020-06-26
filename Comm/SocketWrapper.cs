@@ -15,8 +15,8 @@ namespace MobileDeliveryServer.Comm
     public class SocketWrapper : ISocket
     {
 
-        public UInt32 KeepAliveInterval = 60000;
-        public UInt32 RetryInterval = 30000;
+        public UInt32 KeepAliveInterval = 600000;
+        public UInt32 RetryInterval = 60000;
 
         private readonly Socket _socket;
         private Stream _stream;
@@ -176,6 +176,8 @@ namespace MobileDeliveryServer.Comm
                     (cb, s) => _stream.BeginWrite(buffer, 0, buffer.Length, cb, s);
 
                 Task task = Task.Factory.FromAsync(begin, _stream.EndWrite, null);
+                if (_tokenSource.IsCancellationRequested)
+                    return null;
                 task.ContinueWith(t => callback(), TaskContinuationOptions.NotOnFaulted)
                     .ContinueWith(t => error(t.Exception), TaskContinuationOptions.OnlyOnFaulted);
                 task.ContinueWith(t => error(t.Exception), TaskContinuationOptions.OnlyOnFaulted);

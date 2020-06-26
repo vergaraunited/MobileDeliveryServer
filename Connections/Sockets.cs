@@ -10,40 +10,48 @@ namespace MobileDeliveryServer.Connections
     {
         List<IWebSocketConnection> allConnectedSockets = new List<IWebSocketConnection>();
         public Dictionary<Guid, ProcessMessages> dSocketMsgProc = new Dictionary<Guid, ProcessMessages>();
+        object olock = new object();
 
         public IEnumerator GetEnumerator()
         {
+            lock(olock)
             foreach (var soc in allConnectedSockets)
             {
                 // Yield each day of the week.
                 yield return soc;
-            }
-
+            }    
         }
+
         public void AddSocketConnection(IWebSocketConnection socket)
         {
-            if (!dSocketMsgProc.ContainsKey(socket.ConnectionInfo.Id))
-                dSocketMsgProc.Add(socket.ConnectionInfo.Id, socket.ConnectionInfo.PM);
-            else if (!allConnectedSockets.Contains(socket))
-                throw new Exception("Socket Already connected!");
+            lock (olock)
+            {
+                if (!dSocketMsgProc.ContainsKey(socket.ConnectionInfo.Id))
+                    dSocketMsgProc.Add(socket.ConnectionInfo.Id, socket.ConnectionInfo.PM);
+                else if (!allConnectedSockets.Contains(socket))
+                    throw new Exception("Socket Already connected!");
 
-            if (!allConnectedSockets.Contains(socket))
-                allConnectedSockets.Add(socket);
-            else
-                throw new Exception("Socket Already connected!");
+                if (!allConnectedSockets.Contains(socket))
+                    allConnectedSockets.Add(socket);
+                else
+                    throw new Exception("Socket Already connected!");
+            }
         }
 
         public void RemoveSocketConnection(IWebSocketConnection socket)
         {
-            if (dSocketMsgProc.ContainsKey(socket.ConnectionInfo.Id))
-                dSocketMsgProc.Remove(socket.ConnectionInfo.Id);
-            else if (allConnectedSockets.Contains(socket))
-                throw new Exception("Socket Already connected!");
+            lock (olock)
+            {
+                if (dSocketMsgProc.ContainsKey(socket.ConnectionInfo.Id))
+                    dSocketMsgProc.Remove(socket.ConnectionInfo.Id);
+                else if (allConnectedSockets.Contains(socket))
+                    throw new Exception("Socket Already connected!");
 
-            if (allConnectedSockets.Contains(socket))
-                allConnectedSockets.Remove(socket);
-            else
-                throw new Exception("Socket Not Found or Already disconnected!");
+                if (allConnectedSockets.Contains(socket))
+                    allConnectedSockets.Remove(socket);
+                else
+                    throw new Exception("Socket Not Found or Already disconnected!");
+            }
         }
 
 
@@ -57,11 +65,13 @@ namespace MobileDeliveryServer.Connections
         }
         public IWebSocketConnection GetWebSocket(Guid id)
         {
-            return allConnectedSockets.Find(a => a.ConnectionInfo.Id.CompareTo(id) == 0);
+            lock(olock)
+                return allConnectedSockets.Find(a => a.ConnectionInfo.Id.CompareTo(id) == 0);
         }
 
         public bool SendAllSockets(string msg)
         {
+            lock(olock)
             foreach (IWebSocketConnection s in allConnectedSockets)
                 s.Send(msg);
 
@@ -69,6 +79,7 @@ namespace MobileDeliveryServer.Connections
         }
         public bool SendAllSockets(byte [] msg)
         {
+            lock(olock)
             foreach (IWebSocketConnection s in 
                 allConnectedSockets)
                 s.Send(msg);

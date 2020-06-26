@@ -24,6 +24,7 @@ namespace MobileDeliveryServer.Comm
             _handlerFactory = handlerFactory;
             _parseRequest = parseRequest;
             _negotiateSubProtocol = negotiateSubProtocol;
+            lstMsgSent = DateTime.Now;
         }
 
         public ISocket Socket { get; set; }
@@ -34,6 +35,8 @@ namespace MobileDeliveryServer.Comm
         readonly Func<byte[], WebSocketHttpRequest> _parseRequest;
         ProcessMessages PM;
 
+        public DateTime lstMsgSent { get; private set; }
+        public DateTime lstMsgRcvd { get; private set; }
 
         public IHandler Handler { get; set; }
 
@@ -41,6 +44,7 @@ namespace MobileDeliveryServer.Comm
         private bool _closed;
         private const int ReadSize = 1024 * 4;
 
+        public Action TimerLastSentMsg { get; set; }
         public Action OnOpen { get; set; }
 
         public Action OnClose { get; set; }
@@ -98,7 +102,7 @@ namespace MobileDeliveryServer.Comm
             }
 
             var bytes = createFrame(message);
-            return SendBytes(bytes);
+            return SendBytes(bytes, () => { lstMsgSent = DateTime.Now; });
         }
 
         public void StartReceiving()
@@ -155,16 +159,18 @@ namespace MobileDeliveryServer.Comm
         {
             if (!IsAvailable)
                 return;
-
+            int cnt = 0;
             Socket.Receive(buffer, r =>
             {
                 if (r <= 0)
                 {
                     Logger.Debug("0 bytes read. Closing.");
-                    CloseSocket();
+                    if (cnt++ == 4)
+                        CloseSocket();
                     return;
                 }
                 Logger.Debug(r + " bytes read");
+                lstMsgRcvd = DateTime.Now;
                 var readBytes = buffer.Take(r);
                 if (Handler != null)
                 {
@@ -177,6 +183,7 @@ namespace MobileDeliveryServer.Comm
                 }
 
                 Read(data, buffer);
+                cnt = 0;
             },
             HandleReadError);
         }
@@ -222,6 +229,7 @@ namespace MobileDeliveryServer.Comm
 
         private Task SendBytes(byte[] bytes, Action callback = null)
         {
+            lstMsgSent = DateTime.Now;
             return Socket.Send(bytes, () =>
             {
                 Logger.Debug("Sent " + bytes.Length + " bytes");
@@ -240,11 +248,16 @@ namespace MobileDeliveryServer.Comm
 
         private void CloseSocket()
         {
+            if (Socket.Connected)
+            {
+                Socket.Close();
+                Socket.Dispose();
+            }
+
             _closing = true;
             OnClose();
             _closed = true;
-            Socket.Close();
-            Socket.Dispose();
+            
             _closing = false;
         }
 

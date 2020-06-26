@@ -55,7 +55,8 @@ namespace MobileDeliveryServer
                 socket.OnClose = () =>
                 {
                     try
-                    { 
+                    {
+
                         Logger.Info($"**************** {name} Server - Client Connection Closed!   ************************ - Port: " + socket.ConnectionInfo.ClientPort);
                         soks.RemoveSocketConnection(socket);
                     }
